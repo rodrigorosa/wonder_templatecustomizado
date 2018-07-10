@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <default>
+    <!-- Remove Link para Conta do Usuário no menu superior -->
+    <reference name="top.links">
+      <action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action>
+    </reference>
+
+    <!-- Remove 'Produtos Visualizados Recentemente' -->
+    <reference name="right">
+        <remove name="right.reports.product.viewed" />
+        <remove name="right.reports.product.compared" />
+    </reference>
+    <catalog_category_layered_nochildren>
+      <remove name="right.reports.product.viewed" />
+      <reference name="right">
+        <remove name="left.reports.product.viewed" />
+      </reference>
+    </catalog_category_layered_nochildren>
+
+    <!-- Remove blocos  -->
+    <remove name="store_switcher"/>
+    <remove name="footer_links" />
+    <remove name="footer_links2" />
+    <remove name="cms_footer_links" />
+    <remove name="cms_footer_links_sm" />
+    <remove name="newsletter" />
+    <remove name="footer.newsletter" />
+  </default>
+
+
+  <!-- Adiciona bloco estático Políticas de Preço no fechamento -->
+  <checkout_onepage_index>
+      <reference name="content">
+        <block type="cms/block" name="politica-precos" before="checkout.onepage">
+            <action method="setBlockId"><block_id>politica-precos</block_id></action>
+        </block>
+      </reference>
+  </checkout_onepage_index>
+
+
+  <!-- Remover navegação para usuários não logados -->
+  <customer_logged_out>
+    <reference name="header">
+      <remove name="catalog.topnav" />
+    </reference>
+
+    <reference name="header">
+      <remove name="top.search" />
+    </reference>
+  </customer_logged_out>
+
+    <checkout_cart_index>
+        <reference name="content">
+            <remove name="checkout.cart.coupon"/>
+            <remove name="checkout.cart.shipping"/>
+            <remove name="checkout.cart.crosssell"/>
+            <!-- <remove name="checkout.cart.totals"/> -->
+            <remove name="checkout.cart.methods"/>
+        </reference>
+    </checkout_cart_index>
+</layout>
