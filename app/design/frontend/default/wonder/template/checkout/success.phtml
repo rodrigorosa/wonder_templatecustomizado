@@ -25,6 +25,7 @@
  */
 ?>
 <div class="page-title">
+    <h3><?php echo Mage::app()->getStore()->getFrontendName() ?></h3>
     <h1><?php echo $this->__('Your order has been received.') ?></h1>
 </div>
 <?php echo $this->getMessagesBlock()->toHtml() ?>
